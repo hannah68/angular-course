@@ -11,6 +11,9 @@ export class CourseCardComponent implements OnInit {
   @Input()
   course: Course;
 
+  @Input()
+  cardIndex: number;
+
   @Output()
   courseSelected = new EventEmitter<Course>();
 
@@ -22,6 +25,12 @@ export class CourseCardComponent implements OnInit {
   onCourseViewed(){
     console.log('clicked');
     this.courseSelected.emit(this.course)
+  }
+
+  cardClasses(){
+    if(this.course.category === 'BEGINNER'){
+      return 'beginner'
+    }
   }
 
 }
